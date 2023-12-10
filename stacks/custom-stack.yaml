@@ -3,7 +3,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Parameters:
   S3BucketName:
     Type: String
-    Description:The name of  S3 bucket 
+    Description: The name of  S3 bucket 
   SageMakerDomainName:
     Type: String
     Description: SageMaker Domain Name

@@ -46,6 +46,7 @@ Resources:
           - 'arn:aws:iam::aws:policy/AmazonEC2FullAccess'
 
 
+
   DeleteStrandedSecurityGroups:
     Type: AWS::CloudFormation::CustomResource
     Properties:
