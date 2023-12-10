@@ -2,17 +2,17 @@ AWSTemplateFormatVersion: '2010-09-09'
 
 Parameters:
   S3BucketName:
-    Type: String
-    Description: Name of the S3 bucket to create where all data will be stored python notebooks 
+    Type: String 
+    Description: S3 bucket where all data, code is going to be stored
     Default: "movie-recommendation-s3"
   SageMakerDomainName:
     Type: String
-    Description: Name of the SageMaker domain to create
+    Description: SageMaker domain name
     Default: "movie-recommendation-sys"
   GitHubRepo:
     Type: String
     Description: URL of the GitHub repository to clone
-    Default: "https://github.com/build-on-aws/recommendation-engine-full-stack"
+    Default: "https://github.com/ArvindReddyBobbili/ReviewRadar"
   VpcStackName:
     Type: String
     Description: Name of the VPC stack
@@ -24,11 +24,11 @@ Parameters:
   ImageId:
     Type: String
     Description: Amazon Linux 2023 AMI for the correct region
-    Default: "ami-06ca3ca175f37dd66"
+    Default: "ami-0230bd60aa48260c6"
   KeyName:
     Type: String
     Description: SSH Key Name for troubleshooting purpose
-    Default: ""
+    Default: "review-radar"
 
 Resources:
   CodeS3Bucket:

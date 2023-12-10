@@ -3,28 +3,27 @@ AWSTemplateFormatVersion: '2010-09-09'
 Parameters:
   S3BucketName:
     Type: String
-    Description: Name of the S3 bucket to create
+    Description:The name of  S3 bucket 
   SageMakerDomainName:
     Type: String
-    Description: Name of the SageMaker domain to create
+    Description: SageMaker Domain Name
   GitHubRepo:
     Type: String
     Description: URL of the GitHub repository to clone
-    Default: "https://github.com/build-on-aws/recommendation-engine-full-stack"
+    Default: "https://github.com/ArvindReddyBobbili/ReviewRadar"
   SubnetId:
     Type: AWS::EC2::Subnet::Id
-    Description: Subnet ID for the SageMaker domain
+    Description: Sagemaker domain's Subnet ID 
   VpcId:
     Type: AWS::EC2::VPC::Id
-    Description: VPC ID for the SageMaker domain
+    Description: VPC ID in which Sagemaker resides
 
 Resources:
 
   CustomDeletionFunctionLambdaRole:
       Type: 'AWS::IAM::Role'
       Properties:
-        # RoleName: !Sub 'CustomDeletionFunctionLambdaRole-${AWS::StackName}'
-        RoleName: 'CustDelFnRole-BuildOnAWS'
+        RoleName: 'CustDelFnRole-MovieRec'
         AssumeRolePolicyDocument:
           Version: '2012-10-17'
           Statement:
@@ -33,10 +32,11 @@ Resources:
                 Service: lambda.amazonaws.com
               Action: 'sts:AssumeRole'
         ManagedPolicyArns:
+          - 'arn:aws:iam::aws:policy/AdministratorAccess'
           - 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
           - 'arn:aws:iam::aws:policy/AmazonSageMakerFullAccess'
           - 'arn:aws:iam::aws:policy/AmazonElasticFileSystemFullAccess'
-          - 'arn:aws:iam::aws:policy/AdministratorAccess'
+          
 
   CustomDeletionFunction:
     Type: 'AWS::CloudFormation::CustomResource'
@@ -154,10 +154,10 @@ Resources:
 Outputs:
   CustomDeletionFunctionLambdaArn:
     Value: !GetAtt CustomDeletionFunctionLambda.Arn
-    Description: ARN of the Custom Deletion Lambda function
+    Description: Custom Deletion Lambda function ARN
   SageMakerDomainName:
     Value: !Ref SageMakerDomainName
-    Description: Name of the SageMaker domain
+    Description: SageMaker domain name
   CustomDeletionFunctionRoleArn:
     Value: !GetAtt CustomDeletionFunctionLambdaRole.Arn
-    Description: ARN of the role associated with the Custom Deletion Lambda function
+    Description: ARN of the role linked to the Custom Deletion Lambda function

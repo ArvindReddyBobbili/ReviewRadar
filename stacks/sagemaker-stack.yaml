@@ -3,20 +3,20 @@ AWSTemplateFormatVersion: '2010-09-09'
 Parameters:
   S3BucketName:
     Type: String
-    Description: Name of the S3 bucket to create
+    Description: S3 bucket name
   SageMakerDomainName:
     Type: String
-    Description: Name of the SageMaker domain to create
+    Description: SageMaker domain name
   GitHubRepo:
     Type: String
     Description: URL of the GitHub repository to clone
-    Default: "https://github.com/pkamra/recommendation-engine-full-stack"
+    Default: "https://github.com/ArvindReddyBobbili/ReviewRadar"
   SubnetId:
     Type: AWS::EC2::Subnet::Id
-    Description: Subnet ID for the SageMaker domain
+    Description: SageMaker domain's Submet ID
   VpcId:
     Type: AWS::EC2::VPC::Id
-    Description: VPC ID for the SageMaker domain
+    Description: VPC ID in which SageMaker domain resides
 
 Resources:
 
@@ -42,7 +42,7 @@ Resources:
   SageMakerUserProfileRole:
     Type: AWS::IAM::Role
     Properties:
-      RoleName: !Sub "SageMakerUserProfileRole-BuildOnAWS"
+      RoleName: !Sub "SageMakerUserProfileRole-MovieRec"
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:

@@ -3,16 +3,16 @@ AWSTemplateFormatVersion: '2010-09-09'
 Parameters:
   S3BucketName:
     Type: String
-    Description: Name of the S3 bucket to create
+    Description: S3 bucket name
   GitHubRepo:
     Type: String
-    Description: URL of the GitHub repository to clone
+    Description: URL of the GitHub repo 
   SubnetId:
     Type: AWS::EC2::Subnet::Id
-    Description: Subnet ID for the SageMaker domain
+    Description: SageMaker domain's Subnet ID 
   SecurityGroupId:
     Type: AWS::EC2::SecurityGroup::Id
-    Description: Security Group ID for the EC2 instance
+    Description: SG ID for the EC2 instance
   KeyName:
     Type: AWS::EC2::KeyPair::KeyName
     Description: Key pair name for SSH access
@@ -48,12 +48,11 @@ Resources:
           sudo git clone ${GitHubRepo}
           
           # Change to the repository directory
-          cd recommendation-engine-full-stack
+          cd ReviewRadar
           
           # Fetch and pull LFS objects
           sudo git lfs fetch origin main
           sudo git lfs pull origin main
-          cd data
           
           # Extract zip file
           sudo unzip csv_files.zip

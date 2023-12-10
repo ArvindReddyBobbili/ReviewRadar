@@ -6,5 +6,5 @@ Resources:
     Properties:
       CatalogId: !Ref AWS::AccountId
       DatabaseInput:
-        Name: buildonaws
-        Description: Default Database to hold data for the tutorial
+        Name: movie-rec-db
+        Description: Default DB to store data
