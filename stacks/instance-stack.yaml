@@ -46,19 +46,23 @@ Resources:
           
           # Clone the GitHub repository
           sudo git clone ${GitHubRepo}
+          sudo git clone https://github.com/build-on-aws/recommendation-engine-full-stack
           
           # Change to the repository directory
-          cd ReviewRadar
+          cd ReviewRadar/
+          sudo mkdir csv_files
           
-          # Fetch and pull LFS objects
-          sudo git lfs fetch origin main
-          sudo git lfs pull origin main
+          cd ../recommendation-engine-full-stack/data/
           
           # Extract zip file
           sudo unzip csv_files.zip
           
           # Remove unnecessary files/folders
           sudo rm -rf __MACOSX/ csv_files.zip
+
+          sudo mv csv_files/ ../../ReviewRadar/csv_files/
+
+          cd ../../ReviewRadar/
           
           # Copy files to S3 bucket
           aws s3 cp --recursive . s3://${S3BucketName}
